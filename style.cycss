@@ -1,0 +1,271 @@
+.dimmed {
+  opacity: 0.1;
+}
+
+.hidden {
+  display: none;
+}
+
+node {
+  height: label;
+  width: label;
+  padding: 16px;
+  border-color: black;
+  background-color: whitesmoke;
+  border-width: 1;
+  shape: rectangle;
+  label: data(label);
+  text-valign: center;
+  text-wrap: wrap;
+}
+
+node[labels.1 = "vulnerable"]{
+  border-color: #ff0000;
+  border-width: 4;
+}
+
+node[properties.rs = "Controller"] {
+  border-color: #984ea3;
+  background-color: #decbe4;
+}
+
+node[properties.rs = "Coordinator"] {
+  border-color: #4daf4a;
+  background-color: #ccebc5;
+}
+
+node[properties.rs = "Information Holder"] {
+  border-color: #e4105c;
+  background-color: #fbb4ae;
+}
+
+node[properties.rs = "Interfacer"] {
+  border-color: #ff7f00;
+  background-color: #fed9a6;
+}
+
+
+
+node[properties.rs = "Service Provider"] {
+  border-color: #377eb8;
+  background-color: #b3cde3;
+}
+
+node[properties.rs = "Structurer"] {
+  border-color: #f781bf;
+  background-color: #fddaec;
+}
+
+node[properties.kind = "package"] {
+  text-valign: top;
+  border-color: grey;
+  border-width: 3;
+  background-color: #ececec;
+  text-background-color: whitesmoke;
+  text-border-color: grey;
+  text-background-shape: rectangle;
+  text-border-width: 1;
+  padding: 32px;
+}
+
+node[properties.kind = "file"] {
+  text-valign: top;
+  background-opacity: 0.3;
+  border-color: grey;
+  background-color: #ececec;
+  text-background-color: whitesmoke;
+  text-border-color: grey;
+  text-background-shape: rectangle;
+  text-border-width: 1;
+}
+
+node[properties.kind = "field"] {
+  shape: ellipse;
+}
+
+node[properties.kind = "parameter"] {
+  shape: ellipse;
+}
+
+node[properties.kind = "method"] {
+  shape: round-rectangle;
+}
+
+node[properties.kind = "ctor"] {
+  shape: round-rectangle;
+}
+
+node[properties.kind = "script"] {
+  shape: round-rectangle;
+}
+
+node[labels.0 = "BugType"] {
+  display: none;
+}
+
+edge {
+  width: 3;
+  line-fill: linear-gradient;
+  line-gradient-stop-colors: magenta black;
+  line-gradient-stop-positions: 0% 100%;
+  source-arrow-shape: none;
+  target-arrow-shape: none;
+  line-color: black;
+  target-arrow-color: black;
+  source-arrow-color: black;
+  curve-style: bezier;
+  edge-text-rotation: autorotate;
+  label: data(interaction);
+  arrow-scale: 1.5;
+}
+
+edge[interaction = "contains"] {
+  source-arrow-shape: none;
+  target-arrow-shape: none;
+  display: none;
+  width: 2;
+  line-color: grey;
+  taxi-direction: upward;
+  taxi-turn: -32px;
+}
+
+edge[interaction = "calls"] {
+  target-arrow-color: #1c9099;
+  line-fill: linear-gradient;
+  line-gradient-stop-colors: #edf8b1 #1c9099;
+  line-gradient-stop-positions: 0% 100%;
+  source-arrow-shape: none;
+  target-arrow-shape: none;
+  line-style: dashed;
+  taxi-direction: leftward;
+  taxi-turn: -32px;
+}
+
+edge[interaction = "constructs"] {
+  source-arrow-color: #d95f0e;
+  line-fill: linear-gradient;
+  line-gradient-stop-colors: #fff7bc #d95f0e;
+  line-gradient-stop-positions: 0% 100%;
+  source-arrow-shape: none;
+  target-arrow-shape: none;
+  arrow-scale: 1.5;
+  taxi-direction: leftward;
+  taxi-turn: -32px;
+}
+
+edge[interaction = "accepts"] {
+  target-arrow-color: #31a354;
+  line-fill: linear-gradient;
+  line-gradient-stop-colors: #f7fcb9 #31a354;
+  line-gradient-stop-positions: 0% 100%;
+  source-arrow-shape: none;
+  target-arrow-shape: none;
+  taxi-direction: leftward;
+  taxi-turn: -32px;
+}
+
+edge[interaction = "holds"] {
+  source-arrow-color: #c51b8a;
+  line-fill: linear-gradient;
+  line-gradient-stop-colors: #fde0dd #c51b8a;
+  line-gradient-stop-positions: 0% 100%;
+  source-arrow-shape: none;
+  source-arrow-fill: hollow;
+  target-arrow-shape: none;
+  taxi-direction: leftward;
+  taxi-turn: -32px;
+}
+
+edge[interaction = "specializes"] {
+  target-arrow-color: #ffd92f;
+  line-color: #ffd92f;
+  source-arrow-shape: none;
+  target-arrow-shape: triangle;
+  target-arrow-fill: hollow;
+  curve-style: bezier;
+  taxi-direction: upward;
+  taxi-turn: -32px;
+}
+
+edge[interaction = "realizes"] {
+  target-arrow-color: #ffd92f;
+  line-color: #ffd92f;
+  source-arrow-shape: none;
+  target-arrow-shape: triangle;
+  target-arrow-fill: hollow;
+  line-style: dashed;
+  curve-style: bezier;
+  taxi-direction: upward;
+  taxi-turn: -32px;
+}
+
+edge[interaction = "aggregates"] {
+  source-arrow-color: #e78ac3;
+  line-color: #e78ac3;
+  source-arrow-shape: diamond;
+  target-arrow-shape: none;
+  taxi-direction: leftward;
+  taxi-turn: -32px;
+}
+
+edge[interaction = "composites"] {
+  source-arrow-color: #e78ac3;
+  line-color: #e78ac3;
+  source-arrow-shape: diamond;
+  source-arrow-fill: hollow;
+  target-arrow-shape: none;
+  taxi-direction: leftward;
+  taxi-turn: -32px;
+}
+
+edge[interaction = "accesses"] {
+  target-arrow-color: #e5c494;
+  line-color: #e5c494;
+  source-arrow-shape: none;
+  target-arrow-shape: vee;
+  line-style: dashed;
+  taxi-direction: leftward;
+  taxi-turn: -32px;
+}
+
+edge[interaction = "returns"] {
+  target-arrow-color: #a6d854;
+  line-color: #a6d854;
+  source-arrow-shape: none;
+  target-arrow-shape: vee;
+  line-style: dashed;
+  taxi-direction: leftward;
+  taxi-turn: -32px;
+}
+
+.pkghidden .filehidden {
+  background-opacity: 0;
+  border-opacity: 0;
+  text-opacity: 0;
+}
+
+
+
+.parentRel {
+  display: none;
+}
+
+.feature_shown {
+  background-fill: linear-gradient;
+  background-gradient-direction: to-right;
+}
+
+.feature_reset {
+  background-color: whitesmoke;
+}
+
+.bug_shown{
+    background-fill: linear-gradient;
+    background-gradient-direction: to-right;
+}
+
+.bug_reset {
+  background-color: whitesmoke;
+}
+
+/* Style for expanding and collapsing nodes */
