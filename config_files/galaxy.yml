@@ -4,7 +4,7 @@ gravity:
     port: 4002
 
 galaxy:
-  admin_users: "agathe.minguet@free.fr"
+  admin_users: "user@user.com"
   job_config_file: config/job_conf.yml
 
   interactivetools_enable: true
