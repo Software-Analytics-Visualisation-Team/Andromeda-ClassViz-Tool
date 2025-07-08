@@ -45,10 +45,67 @@ After running the tool, you will see a link in Galaxy pointing to the interactiv
    cd ClassViz-Tool
    docker build -t classviz:latest .
    ```
+---
+
+### 3. Specific configuration
+Your Galaxy configuration now requires specific settings under the `gravity` section of your `config/galaxy.yml`. Add or verify the following entries:
+
+```yaml
+gravity:
+  gx_it_proxy:
+    enable: true
+    port: 4002
+```
+
+And you will also need these settings under the 'galaxy' section : 
+```yaml
+galaxy:
+  job_config_file: config/job_conf.yml
+
+  interactivetools_enable: true
+  interactivetools_map: database/interactivetools_map.sqlite
+  interactivetools_proxy_host: localhost:4002
+  interactivetools_upstream_proxy: false
+
+  outputs_to_working_directory: true
+  galaxy_infrastructure_url: http://localhost:8080
+```
+A full example is available under config_files/galaxy.yml
+
+### Job Configuration (`job_conf.yml`)
+
+Galaxy now prefers a YAML-based job configuration. In your `config/job_conf.yml` (create or edit this file), define an environment for interactive tools and assign it to the ClassViz tool:
+
+```yaml
+environments:
+  docker_env:
+    runner: local
+    docker_enabled: true
+    interactive: true
+    docker_set_user: root
+tools:
+  - id: "classviz"
+    environment: docker_env
+```
+Don't forget you will need an environment for your non-interactive tools like :
+
+```yaml
+execution:
+  default: default
+  environments:
+    # Non interactive tools
+    default:
+      runner: local
+      docker_enabled: false 
+      interactive: false      
+```
+A full example is available under config_files/classviz/job_conf.yml
+If you still work with XML, a reference XML-based job configuration (`job_conf.xml`) is still available under `config_files/classviz` if you need them.
+
 
 ---
 
-### 3. Usage
+### 4. Usage
 
 1. **Start Galaxy**
 
@@ -74,14 +131,14 @@ Galaxy handles starting and stopping the HTTP server automatically.
 
 ---
 
-### 4. Internals
+### 5. Internals
 
-#### 4.1 File Paths
+#### 5.1 File Paths
 
 * **Input JSON**: provided by Galaxy as `input.json`.
 * **Copied File**: `data/input.svif` inside the container.
 
-#### 4.2 Main Command
+#### 5.2 Main Command
 
 In `classviz.xml`:
 
@@ -97,19 +154,19 @@ In `classviz.xml`:
 * `$input`: path to the uploaded file
 * `data/input.svif`: where the validated copy is stored
 
-#### 4.3 Validation & Copy
+#### 5.3 Validation & Copy
 
 * The script loads JSON and checks it against the built-in SVIF\_SCHEMA.
 * On success, it writes the same JSON bytes to `/opt/classviz/data/input.svif`.
 
-#### 4.4 HTTP Server
+#### 5.4 HTTP Server
 
 * Uses Python’s `ThreadingHTTPServer` to serve the `tool_dir` folder.
 * Reads port from `GALAXY_IT_PORT` (default **7800**).
 * Accessible from the **User ▶ Active Interactive Tools**
 ---
 
-### 5. Testing
+### 6. Testing
 
 Run all unit tests (schema, copy, server startup):
 
