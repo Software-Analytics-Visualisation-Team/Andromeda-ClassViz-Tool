@@ -70,7 +70,6 @@ galaxy:
   outputs_to_working_directory: true
   galaxy_infrastructure_url: http://localhost:8080
 ```
-A full example is available under config_files/galaxy.yml
 
 ### Job Configuration (`job_conf.yml`)
 
@@ -99,9 +98,12 @@ execution:
       docker_enabled: false 
       interactive: false      
 ```
-A full example is available under config_files/classviz/job_conf.yml
 If you still work with XML, a reference XML-based job configuration (`job_conf.xml`) is still available under `config_files/classviz` if you need them.
 
+Full examples are available under  
+- [config_files/galaxy.yml](config_files/galaxy.yml)  
+- [config_files/job_conf.yml](config_files/job_conf.yml)
+- [config_files/job_conf.xml](config_files/job_conf.xml)
 
 ---
 
