@@ -1,34 +1,28 @@
-<tool id="classviz" name="ClassViz" version="2.2.3">
-  <description>visualize knowledge-based system representations</description>
+<tool id="classviz" name="ClassViz (interactive)" version="2.2.3"
+      tool_type="interactive">
+  <description>Visualize knowledge-based system representations</description>
   <requirements>
     <requirement type="package" version="3.10">python</requirement>
   </requirements>
-  <command detect_errors="exit_code">
-   python3 '${__tool_directory__}/classviz.py' '$input' '${__tool_directory__}/data/input.svif' '${__tool_directory__}/'
-  </command>
-  <inputs>
-    <param name="input" type="data" format="svif" multiple="False" label="SVIF file">
-        <validator type="dataset_ok_validator" message="Not supported file type."/>
-    </param>
-  </inputs>
-  <stdio>
-    <exit_code range="6:6" level="fatal" description="Not a JSON file" />
-    <exit_code range="7:7" level="fatal" description="Invalid SVIF format file" />
-  </stdio>
-  <outputs>
-    <data format="txt" name="output" label="Go to http://localhost:7800/"/>
-  </outputs>
-  <help>
-**What it does**
-
-This tool takes a JSON file, in Software Vizualization Interchange Format (**SVIF**) file format, as input and visualizes a knowledge-based system representation of the code.
-
------
-
+    <command detect_errors="exit_code"><![CDATA[
+        python /opt/classviz/classviz.py '$input' '/opt/classviz/data/input.svif'
+    ]]></command>
+    <inputs>
+        <param name="input" type="data" format="svif" label="SVIF file"/>
+    </inputs>
+    <outputs>
+        <data format="txt" name="output" label="ClassViz running… go to User > Interactive Tools"/>
+    </outputs>
+    <entry_points>
+        <entry_point name="ClassViz" requires_domain="False">
+            <port>7800</port>
+        </entry_point>
+    </entry_points>
+    <help>
 **Remarks**
 
 - The job fails if the input file is not a JSON file, or it is not in SVIF file format.
-- Delete the job once done to kill the server that hosts the tool.
-
-  </help>
+- Go to the Interactive Tools section in the User menu to view the tool's output.
+- Go to the Interactive Tools section in the User menu to kill the process if it is still running.
+    </help>
 </tool>
