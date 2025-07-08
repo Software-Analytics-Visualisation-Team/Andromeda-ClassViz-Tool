@@ -48,6 +48,8 @@ After running the tool, you will see a link in Galaxy pointing to the interactiv
 ---
 
 ### 3. Specific configuration
+#### Galaxy Configuration (`galaxy.yml`)
+
 Your Galaxy configuration now requires specific settings under the `gravity` section of your `config/galaxy.yml`. Add or verify the following entries:
 
 ```yaml
@@ -71,7 +73,7 @@ galaxy:
   galaxy_infrastructure_url: http://localhost:8080
 ```
 
-### Job Configuration (`job_conf.yml`)
+#### Job Configuration (`job_conf.yml`)
 
 Galaxy now prefers a YAML-based job configuration. In your `config/job_conf.yml` (create or edit this file), define an environment for interactive tools and assign it to the ClassViz tool:
 
