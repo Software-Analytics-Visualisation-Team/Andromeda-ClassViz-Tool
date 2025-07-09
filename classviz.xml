@@ -3,6 +3,7 @@
   <description>Visualize knowledge-based system representations</description>
   <requirements>
     <requirement type="package" version="3.10">python</requirement>
+    <container type="docker">classviz:latest</container>
   </requirements>
     <command detect_errors="exit_code"><![CDATA[
         python /opt/classviz/classviz.py '$input' '/opt/classviz/data/input.svif'
