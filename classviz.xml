@@ -5,10 +5,16 @@
     <requirement type="package" version="3.10">python</requirement>
     <container type="docker">classviz:latest</container>
   </requirements>
-    <command detect_errors="exit_code"><![CDATA[
+  <!-- Locally, use :  -->
+    <!-- <command detect_errors="exit_code"><![CDATA[
         python /opt/classviz/classviz.py '$input' '/opt/classviz/data/input.svif'
+    ]]></command> -->
+
+  <!-- On your server, use :  -->
+    <command detect_errors="exit_code"><![CDATA[
+    python '$__tool_directory__/classviz.py' '$input' '$output'
     ]]></command>
-    <inputs>
+      <inputs>
         <param name="input" type="data" format="svif" label="SVIF file"/>
     </inputs>
     <outputs>
