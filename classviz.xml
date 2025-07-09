@@ -11,9 +11,9 @@
     ]]></command> -->
 
   <!-- On your server, use :  -->
-    <command detect_errors="exit_code"><![CDATA[
-    python '$__tool_directory__/classviz.py' '$input' '$output'
-    ]]></command>
+   <command detect_errors="exit_code"><![CDATA[
+      python /opt/classviz/classviz.py '$input' '/opt/classviz/data/input.svif'
+   ]]></command>
       <inputs>
         <param name="input" type="data" format="svif" label="SVIF file"/>
     </inputs>
