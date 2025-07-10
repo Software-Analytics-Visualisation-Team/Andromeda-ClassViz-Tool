@@ -18,7 +18,7 @@
         <param name="input" type="data" format="svif" label="SVIF file"/>
     </inputs>
     <outputs>
-        <data format="txt" name="output" label="ClassViz running… go to User > Interactive Tools"/>
+      <data format="txt" name="output" label="Go to the User tab (on the top) and Select Interactive Tools (from dropdown) and select ClassViz"/>
     </outputs>
     <entry_points>
         <entry_point name="ClassViz" requires_domain="False">
